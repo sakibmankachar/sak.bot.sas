@@ -36,7 +36,9 @@ bot.status({
 });
 bot.variables({
   prefix: "s.",
-  money: 500
+  money: 500,
+  welcome: "",
+  goodbye: ""
 });
 
 bot.command({

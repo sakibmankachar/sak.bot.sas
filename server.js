@@ -342,7 +342,10 @@ bot.variables({
   lvl: "0",
   exp: "0",
   rexp: "40",
-  rsystem: "0"
+  rsystem: "0",
+  bank: "0",
+  case: "",
+  warns: "0"
 });
 
 bot.command({
@@ -496,13 +499,7 @@ $color[C0C0C0]
 $deletecommand`
 });
 
-bot.variables({
-  bank: "0",
-  warns: "0",
-  case: ""
-});
-
-bot.command({
+ot.command({
   name: "warn",
   code: `$setUserVar[warns;$sum[$getUserVar[warns;$mentioned[1]];1];$mentioned[1]]
 
@@ -608,8 +605,13 @@ $onlyPerms[ban;You cannot use the command]`
 
 bot.command({
   name: "unban",
-  code: `$nomentionnban
+  code: `$unban
 
 $onlyAdmin[You need a higher role to execute that.]
 
-$description[User has been unba
+$description[User has been unbanned.]
+
+$deleteIn[5s]
+
+$deletecommand`
+});

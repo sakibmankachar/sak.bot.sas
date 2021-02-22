@@ -395,27 +395,6 @@ $onlyIf[$message[1]!=;You need to put Anime name]
 });
 
 bot.command({
-  name: "work",
-  code: `$addTimestamp 
-
-$color[A3160D]
-
-$deletecommand 
-
-$title[**__PayCheck__**]
-
-$description[$username has worked for $random[1;12] Hours they worked at $randomText[McDonalds;Kanes;BDFD;Pokemon Company] they earned $$random[175;1250] Dollars!]
-
-$editIn[5s;You have been paid, Please say "s.balance" for your balance!]
-
-$footer[$date]
-
-$setVar[money;$sum[$getVar[money];$random[175;1250]]]
-
-$cooldown[2m;Must wait %time% to work again!]`
-});
-
-bot.command({
   name: "covid19",
   code: `nomention
 
@@ -612,4 +591,14 @@ $description[User has been unbanned.]
 $deleteIn[5s]
 
 $deletecommand`
+});
+
+bot.command({
+  name: "work",
+  code: `$setUserVar[money;$sum[$getUserVar[money;$authorID];$random[200;3000]];$authorID]
+$color[08b763]
+$footer[\`s.balance\` to check your current balance]
+$description[You worked as a $randomText[employ; co-worker;worker; carpenter] and got :dollar: $random[200;3000] money!]
+$author[$username;$authorAvatar]
+$cooldown[2hr;Please wait for %time% before trying to work again.]`
 });

@@ -392,3 +392,108 @@ $onlyIf[$message[1]!=;You need to put Anime name]
 
 `
 });
+
+bot.command({
+  name: "work",
+  code: `$addTimestamp 
+
+$color[A3160D]
+
+$deletecommand 
+
+$title[**__PayCheck__**]
+
+$description[$username has worked for $random[1;12] Hours they worked at $randomText[McDonalds;Kanes;BDFD;Pokemon Company] they earned $$random[175;1250] Dollars!]
+
+$editIn[5s;You have been paid, Please say "s.balance" for your balance!]
+
+$footer[$date]
+
+$setVar[money;$sum[$getVar[money];$random[175;1250]]]
+
+$cooldown[2m;Must wait %time% to work again!]`
+});
+
+bot.command({
+  name: "covid19",
+  code: `nomention
+
+$title[Covid On $message]
+
+$image[https://covid-img.herokuapp.com/country/$toLowercase[$message]]
+
+$color[$random[111111;999999]]
+
+$footer[Covid Stats ]
+
+$addTimestamp`
+});
+
+bot.command({
+  name: "balance",
+  code: `$addTimestamp 
+
+$footer[$date]
+
+$deletecommand 
+
+$color[A3160D]
+
+$title[$username's Balance]
+
+$description[
+
+**__Money__**
+
+$$getVar[money;<$authorID>] 
+
+**__Bank__**
+
+$$getVar[bank;<$authorID>]]
+
+$thumbnail[$userAvatar[$authorID]]`
+});
+
+bot.command({
+  name: "withdraw",
+  code: `$onlyIf[$replaceText[$noMentionMessage[1];all;$getVar[bank;$authorID];1]>=1;You cannot Withdraw Anything below 1.]
+
+$setVar[money;$sum[$getVar[money];$replaceText[$message;all;$getVar[bank];1]]]
+
+$setVar[bank;$sub[$getVar[bank];$replaceText[$message;all;$getVar[bank];1]]] 
+
+$onlyIf[$replaceText[$noMentionMessage[1];all;$getVar[bank;$authorID];1]<=$getVar[bank;$authorID];You don't have enough coins to Withdrawl.]
+
+$title[Withdrawl of $username]
+
+$description[$username Withdrawn: $replaceText[$noMentionMessage[1];all;$getVar[bank;$authorID];1] coins in your wallet.]
+
+$addTimestamp
+
+$color[C0C0C0]
+
+$deletecommand`
+});
+
+bot.command({
+  name: "deposit",
+  code: `$onlyIf[$replaceText[$noMentionMessage[1];all;$getVar[money;$authorID];1]>=1;You cannot deposit Anything below 1.]
+
+$setVar[bank;$sum[$getVar[bank];$replaceText[$message;all;$getVar[money];1]]]
+
+$setVar[money;$sub[$getVar[money];$replaceText[$message;all;$getVar[money];1]]] 
+
+$onlyIf[$replaceText[$noMentionMessage[1];all;$getVar[money;$authorID];1]<=$getVar[money;$authorID];You don't have enough coins to deposit]
+
+$title[Deposit of $username]
+
+$description[$username deposited: $replaceText[$noMentionMessage[1];all;$getVar[money;$authorID];1] coins in your bank]
+
+$addTimestamp
+
+$color[C0C0C0]
+
+$deletecommand`
+});
+
+

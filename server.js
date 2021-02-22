@@ -34,12 +34,6 @@ bot.status({
   type: "WATCHING",
   time: 300
 });
-bot.variables({
-  prefix: "s.",
-  money: 500,
-  welcome: "",
-  goodbye: ""
-});
 
 bot.command({
   name: "roulette",
@@ -345,7 +339,11 @@ bot.variables({
   rsystem: "0",
   bank: "0",
   case: "",
-  warns: "0"
+  warns: "0",
+  welcome: "",
+  goodbye: "",
+  prefix: "s.",
+  money: "500"
 });
 
 bot.command({

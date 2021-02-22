@@ -542,4 +542,74 @@ $title[Warn Check]
 $description[This user has $getUserVar[warns;$mentioned[1]] warns]`
 });
 
-b
+bot.command({
+  name: "muted",
+  code: `$mute[muted]
+
+$title[MUTE]
+
+$description[<@$mentioned[<]> Is muted by $username] 
+
+$footer[Muted by $username]
+
+$argsCheck[>1;Please mention someone]
+
+$onlyPerms[manageroles;You cannot use this command]`
+});
+
+bot.command({
+  name: "unmuted",
+  code: `$unmute[muted]
+
+$title[UNMUTE]
+
+$description[<@$mentioned[<]> is unmuted by $username]
+
+$footer[Unmuted by $username]
+
+$argsCheck[>1;Please mention user]
+
+$onlyPerms[manageroles;You cannot use this command]`
+});
+
+bot.command({
+  name: "kick",
+  code: `$kickMention
+
+$title[KICK]
+
+$color[#ff2052]
+
+$description[$username[$mentioned[<]] Is kicked by $username]
+
+$footer[Kicked by $username]
+
+$argsCheck[>1;Please mention someone]
+
+$onlyPerms[kick;You cannot use this command]`
+});
+
+bot.command({
+  name: "ban",
+  code: `$ban
+
+$title[BAN]
+
+$color[#ff2052]
+
+$description[<$mentioned[<]> Banned from the server!]
+
+$footer[Banned by <$authorID>]
+
+$argsCheck[>1;Please type ID]
+
+$onlyPerms[ban;You cannot use the command]`
+});
+
+bot.command({
+  name: "unban",
+  code: `$nomentionnban
+
+$onlyAdmin[You need a higher role to execute that.]
+
+$description[User has been unba

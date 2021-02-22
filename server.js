@@ -499,7 +499,7 @@ $color[C0C0C0]
 $deletecommand`
 });
 
-ot.command({
+bot.command({
   name: "warn",
   code: `$setUserVar[warns;$sum[$getUserVar[warns;$mentioned[1]];1];$mentioned[1]]
 

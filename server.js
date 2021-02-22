@@ -341,7 +341,7 @@ bot.variables({
   rmsg: "Congrats {user.tag}🎉, you leveled up to level {level}",
   lvl: "0",
   exp: "0",
-  rexp: "40",
+  rexp: "200",
   rsystem: "0",
   bank: "0",
   case: "",

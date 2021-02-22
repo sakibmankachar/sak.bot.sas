@@ -410,31 +410,6 @@ $addTimestamp`
 });
 
 bot.command({
-  name: "balance",
-  code: `$addTimestamp 
-
-$footer[$date]
-
-$deletecommand 
-
-$color[A3160D]
-
-$title[$username's Balance]
-
-$description[
-
-**__Money__**
-
-$$getVar[money;<$authorID>] 
-
-**__Bank__**
-
-$$getVar[bank;<$authorID>]]
-
-$thumbnail[$userAvatar[$authorID]]`
-});
-
-bot.command({
   name: "warn",
   code: `$setUserVar[warns;$sum[$getUserVar[warns;$mentioned[1]];1];$mentioned[1]]
 
@@ -552,33 +527,31 @@ $deletecommand`
 });
 
 bot.command({
-name: "work",
-code: `$setUserVar[money;$sum[$getUserVar[money;$authorID];$random[200;3000]];$authorID]
+  name: "work",
+  code: `$setUserVar[money;$sum[$getUserVar[money;$authorID];$random[200;3000]];$authorID]
 $color[08b763]
 $footer[\`s.balance\` to check your current balance]
 $description[You worked as a $randomText[employ; co-worker;worker; carpenter] and got :dollar: $random[200;3000] money!]
 $author[$username;$authorAvatar]
-$cooldown[$getServerVar[cooldownWork]s;Please wait for %time% before trying to work again.]
-})
+$cooldown[2hr;Please wait for %time% before trying to work again.]`
+});
 
 bot.command({
-name: "withdraw",
-aliases: ['with'],
-code: `
-$setUserVar[bank;$sub[$getUserVar[bank;$authorID];$message];$authorID]
+  name: "withdraw",
+  aliases: ["with"],
+  code: `$setUserVar[bank;$sub[$getUserVar[bank;$authorID];$message];$authorID]
 $setUserVar[money;$sum[$getUserVar[money;$authorID];$message];$authorID]
 $description[You withdrew :dollar: $message from your :bank: bank]
 $author[$username;$authorAvatar]
 $suppressErrors[Not a valid number!]
 $onlyIf[$message<=$getUserVar[money;$authorID];That amount is higher than the amount in your bank!]
-$onlyIf[$message>0;You cannot withdraw an amount lower than \`0\`. If you want to withdraw all, then use the command \`*with-all\]`
-})
+$onlyIf[$message>0;You cannot withdraw an amount lower than \`0\`. If you want to withdraw all, then use the command s.with-all]`
+});
 
-ECONOMY SYSTEM PART 5 (Deposit Money to Bank)
-module.exports = ({
-name: "deposit",
-aliases: ['dep'],
-code: `
+bot.command({
+  name: "deposit",
+  aliases: ["dep"],
+  code: `
 $setUserVar[bank;$sum[$getUserVar[bank;$authorID];$message];$authorID]
 $setUserVar[money;$sub[$getUserVar[money;$authorID];$message];$authorID]
 $description[You deposited :dollar: $message in your :bank: bank]
@@ -587,11 +560,11 @@ $suppressErrors[Not a valid number!]
 $onlyIf[$message<=$getUserVar[money;$authorID];That amount is higher than the amount in your wallet!]
 $onlyIf[$message>0;You cannot deposit an amount lower than \`0\`. If you want to deposit all, then use the command \`*dep-all\`]
 `
-})
+});
 
 bot.command({
- name: "rob",
- code: `$deletecommand
+  name: "rob",
+  code: `$deletecommand
 $setUserVar[money;$sub[$getUserVar[money;$mentioned[1]];$random[1;$getUserVar[money;$mentioned[1]]]];$mentioned[1]]
 $setUserVar[money;$sum[$getUserVar[money]]$random[1;$getUserVar[money;$mentioned[1]]]]]
 $title[Robbed!]
@@ -601,14 +574,14 @@ $author[$username;$authorAvatar]
 $onlyIf[$random[1;5]==3;{execute:AwaitedRobFail}]
 $onlyIf[$getUserVar[money;$mentioned[1]>2999;That user doesn't have enough money to rob!]
 $onlyIf[$getUserVar[money]>2999;You need at least $3000 to rob someone!]
-$cooldown[$getServerVar[cooldownRob]min;You need to wait for %time% before trying to rob someone again!]
+$cooldown[2hr;You need to wait for %time% before trying to rob someone again!]
 $onlyIf[$mentioned[1]!=;Please mention someone to rob!]
 `
-})
+});
 
 bot.awaitedCommand({
- name: "AwaitedRobFail",
- code: `$deletecommand
+  name: "AwaitedRobFail",
+  code: `$deletecommand
 $setUserVar[money;$sum[$getUserVar[money;$mentioned[1]];$random[1;$getUserVar[money;$mentioned[1]]]];$mentioned[1]]
 $setUserVar[money;$sub[$getUserVar[money]]$random[1;$getUserVar[money;$mentioned[1]]]]]
 $title[Busted!]
@@ -616,13 +589,26 @@ $color[ff0000]
 $description[$username was caught attempting to rob $username[mentioned[1]] and had to pay $random[1;$getUserVar[money;mentioned[1]]] as a fine]
 $author[$username;$authorAvatar]
 `
-})
+});
 
 bot.command({
-name: "leaderboard",
-code: `$userLeaderboard[money;desc]
+  name: "leaderboard",
+  code: `$userLeaderboard[money;desc]
 $title[Balance Leaderboard]
 $color[ff00ff]
 `
-})
+});
 
+bot.command({
+  name: "balance",
+  aliases: ["bal", "money"],
+  code: `
+$color[00ff00]
+$description[:dollar: __**MONEY:**__ $getUserVar[money;$authorID]
+
+:bank: __**BANK:**__ $getUserVar[bank;$authorID]
+
+:credit_card: __**Net Worth:**__ $sum[$getUserVar[money;$authorID];$getUserVar[bank;$authorID]]
+]
+$author[$username;$authorAvatar]`
+});

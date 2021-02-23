@@ -384,9 +384,7 @@ $onlyIf[$message[1]!=;You need to put Anime name]
 
 bot.command({
   name: "covid19",
-  code: `nomention
-
-$title[Covid On $message]
+  code: `$title[Covid On $message]
 
 $image[https://covid-img.herokuapp.com/country/$toLowercase[$message]]
 

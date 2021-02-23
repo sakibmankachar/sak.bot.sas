@@ -199,20 +199,8 @@ $addTimestamp
 $color[$random[0;99999]]`
 });
 
-bot.command({
-  name: "invite",
-  code: `$nomention
-$title[INVITE]
-$description[Want Me To Invite In Your Server?
-Here's my invite link [Click Here](https://discord.com/oauth2/authorize?client_id=804720808182022245&scope=bot&permissions=2147483647).
-If you need any help about my commands just type s.help.
-If you don't need any help about my commands but in anything else.
-Then join My Discord server.
-Here's My Discord server join link [Click Here](https://discord.gg/QzHryrpSaq).]
-$footer[THANKS FOR READING!]`
-});
 bot.joinCommand({
-  channel: "$getServerVar[Welcome]",
+  channel: "$getServerVar[welcome]",
   code: `$image[https://api.xzusfin.repl.co/card?avatar=$replaceText[$authorAvatar;.
 webp;.png;1]?size=2048&middle=Welcome&name=$replaceText[$replaceText[$username[$authorID]#$discriminator[$authorID];#;%23;-1]; ;%20;-1]&bottom=$replaceText[We are now $membersCount members; ;%20;-1]&background=https://cdn.discordapp.com/attachments/789656208276848682/798106281189572645/default11.png&text=%23ffffff&avatarborder=%23FFFFFF&avatarbg=%23FF28b3]
 $suppressErrors`
@@ -220,7 +208,7 @@ $suppressErrors`
 bot.onJoined();
 
 bot.leaveCommand({
-  channel: "$getServerVar[leave]",
+  channel: "$getServerVar[goodbye]",
   code: `$image[https://api.xzusfin.repl.co/card?avatar=$replaceText[$authorAvatar;.webp;.png;1]?size=2048&middle=Goodbye&name=$replaceText[$replaceText[$username[$authorID]#$discriminator[$authorID];#;%23;-1]; ;%20;-1]&bottom=$replaceText[Now we are $membersCount members; ;%20;-1]&background=https://cdn.discordapp.com/attachments/789656208276848682/798106281189572645/default11.png&text=%23ffffff&avatarborder=%23FFFFFF&avatarbg=%23FF28b3]
 $suppressErrors`
 });
@@ -612,3 +600,20 @@ $description[:dollar: __**MONEY:**__ $getUserVar[money;$authorID]
 ]
 $author[$username;$authorAvatar]`
 });
+
+bot.command({
+
+name: "invite",
+
+code: `$title[INVITE]
+
+$description[Want To Invite Me In Your Server?
+
+Here's my invite link[Click Here](https://discord.com/oauth2/authorize?client_id=804720808182022245&scope=bot&permissions=2080898175) 
+
+If you want Support Then Join My Official Support Server
+
+Here my Official Support Server Join Link [Click Here](https://discord.gg/96BqdnWvh8) ]
+
+$footer[Sak-bot]`
+  })

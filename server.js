@@ -655,55 +655,100 @@ bot.command({
 });
 
 bot.command({
- name: "$alwaysExecute",
- nonPrefixed: true,
- code: `$deletecommand
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
  $onlyIfMessageContains[$message;Fuck;]
  $onlyIf[$getServerVar[bw]==True;]
  <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
  `
-})
+});
 bot.command({
- name: "$alwaysExecute",
- nonPrefixed: true,
- code: `$deletecommand
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
  $onlyIfMessageContains[$message;motherfucker;]
  $onlyIf[$getServerVar[bw]==True;]
  <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
  `
-})
+});
 bot.command({
- name: "$alwaysExecute",
- nonPrefixed: true,
- code: `$deletecommand
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
  $onlyIfMessageContains[$message;Motherfucker;]
  $onlyIf[$getServerVar[bw]==True;]
  <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this Server | Reason: **AutoMod Enable**
  `
-})
+});
 
 bot.command({
- name: "$alwaysExecute",
- nonPrefixed: true,
- code: `$deletecommand
- $onlyIfMessageContains[$message;Fuckbot.command({
- name: "$alwaysExecute",
- nonPrefixed: true,
- code: `$deletecommand
- $onlyIfMessageContains[$message;Fuck;]
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
+ $onlyIfMessageContains[$message;Fucker;]
  $onlyIf[$getServerVar[bw]==True;]
  <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
  `
-})
+});
+
 bot.command({
- name: "$alwaysExecute",
- nonPrefixed: true,
- code: `$deletecommand
- $onlyIfMessageContains[$message;Fuck;]
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `
+  $deletecommand
+ $onlyIfMessageContains[$message;fucker;]
  $onlyIf[$getServerVar[bw]==True;]
  <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
  `
-})
-er;]
+});
+
+bot.command({
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
+ $onlyIfMessageContains[$message;Fucked;]
  $onlyIf[$getServerVar[bw]==True;]
- <@$authorID> Use Of Bad Words or Swearing is Not Allo
+ <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
+ `
+});
+
+bot.command({
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
+ $onlyIfMessageContains[$message;fucked;]
+ $onlyIf[$getServerVar[bw]==True;]
+ <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
+ `
+});
+
+bot.command({
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
+ $onlyIfMessageContains[$message;Hell;]
+ $onlyIf[$getServerVar[bw]==True;]
+ <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
+ `
+});
+
+bot.command({
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `
+ $deletecommand
+ $onlyIfMessageContains[$message;hell;]
+ $onlyIf[$getServerVar[bw]==True;]
+ <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**`
+});
+
+bot.command({
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
+ $onlyIfMessageContains[$message;what the fuck;]
+ $onlyIf[$getServerVar[bw]==True;]
+ <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
+ `
+});

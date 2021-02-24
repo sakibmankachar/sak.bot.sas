@@ -752,3 +752,77 @@ bot.command({
  <@$authorID> Use Of Bad Words or Swearing is Not Allowed in this server  | Reason: **AutoMod Enable**
  `
 });
+
+bot.command({
+  name: "play",
+  code: `$playSong[$message;1s]`
+});
+
+bot.command({
+  name: "songinfo",
+  code: `Currrently Playing: $songInfo[title]` //Returns song title
+});
+
+bot.command({
+  name: "skip",
+  code: `$skipSong`
+});
+
+bot.command({
+  name: "volume",
+  code: `
+$volume[50]
+`
+});
+
+bot.awaitedCommand({
+  name: "awaitMusic1",
+  code: `$editMessage[$message[1];{color:WHITE}
+ {title:Skip}{description:The song was skipped}]
+ $skipSong`
+});
+
+bot.awaitedCommand({
+  name: "awaitMusic2",
+  code: `$editMessage[$message[1];{color:WHITE}
+ {title:Loop}{description:The queue was looped}]
+ $loopQueue`
+});
+
+bot.awaitedCommand({
+  name: "awaitMusic3",
+  code: `$editMessage[$message[1];{color:WHITE}
+ {title:Pause}{description:Paused}]
+ $pauseSong`
+});
+
+bot.awaitedCommand({
+  name: "awaitMusic4",
+  code: `$editMessage[$message[1];{color:WHITE}
+ {title:Resume}{description:Resumed}]
+ $resumeSong`
+});
+
+bot.awaitedCommand({
+  name: "awaitMusic5",
+  code: `$editMessage[$message[1];{color:WHITE}
+ {title:Music Config}{description:⏭️ - Skip
+ 🔄 - Loop
+ ⏸️ - Pause
+ ▶️ - Resume
+ 🔄 - Back}]`
+});
+
+bot.command({
+  name: "music",
+  usage: "music",
+  description: "Calls up the music control menu",
+  code: `$reactionCollector[$splitText[1];$authorID;1h;⏭️,🔄,⏸️,▶️,◀️;awaitMusic1,awaitMusic2,awaitMusic3,awaitMusic4,awaitMusic5;yes]
+ $textSplit[$sendMessage[{color:WHITE}
+ {title:Music Config}{description:⏭️ - Skip
+ 🔄 - Loop
+ ⏸️ - Pause
+ ▶️ - Resumе
+ ◀️ - Back};yes]; ]
+ $onlyIf[$voiceID[$authorID]!=;Sorry, but you are not connected to the voice channel.]]`
+});

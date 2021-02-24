@@ -760,20 +760,7 @@ bot.command({
 
 bot.command({
   name: "songinfo",
-  code: `Currrently Playing: $songInfo[title]` //Returns song title
-});
-
-bot.command({
-  name: "skip",
-  code: `$skipSong`
-});
-
-bot.command({
-  name: "volume",
-  code: `
-$volume[50]
-`
-});
+  code: `Currrently Playing: $songInfo[title]` //Ret
 
 bot.awaitedCommand({
   name: "awaitMusic1",

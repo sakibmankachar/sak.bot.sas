@@ -332,7 +332,7 @@ bot.variables({
   goodbye: "",
   prefix: "s.",
   money: "500",
-  bw: "False",
+  bw: "False"
 });
 
 bot.command({
@@ -619,7 +619,37 @@ $footer[Sak-bot]`
 });
 
 bot.command({
-  name: "fuck",
-  code: `$onlyIf[$getServerVar[bw]>=True;{Use Of Bad words or Swearing is Not Allowed in this Server}`
-})
+  name: "$alwaysExecute",
+  nonPrefixed: true,
+  code: `$deletecommand
+ $onlyIfMessageContains[$message;Fuck;fuck;motherfucker;Motherfucker,Fucker;fucker;fucked;Fucked;Hell;hell;]
+ $onlyIf[$getServerVar[word]==true;]
+ <@$authorID> Use of Bad Words or Swearing is Not Allowed in this server Reason: **AutoMod Enable**
+ `
+});
 
+bot.command({
+  name: "AutoMod on",
+  code: `$setServerVar[bw;True]
+ $onlyBotPerms[managemessages;Bot missing permission **MANAGE MASSAGES**]
+ $onlyPerms[managechannels;You are not a moderate or Admin!]
+ $title[AutoMod System]
+ $description[AutoMod Enable]
+ $footer[Request by $username ]
+ $addTimestamp
+ $color[WHITE]
+`
+});
+
+bot.command({
+  name: "AutoMod off",
+  code: `$setServerVar[bw;False]
+ $onlyBotPerms[managemessages;Bot missing permission **MANAGE MASSAGES**]
+ $onlyPerms[managechannels;You are not a moderator or Admin!]
+ $title[AutoMod System]
+ $description[AutoMod Disable]
+ $footer[Request by $username ]
+ $addTimestamp
+ $color[WHITE]
+ `
+});

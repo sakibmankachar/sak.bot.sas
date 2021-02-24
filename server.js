@@ -331,7 +331,8 @@ bot.variables({
   welcome: "",
   goodbye: "",
   prefix: "s.",
-  money: "500"
+  money: "500",
+  bw: "
 });
 
 bot.command({

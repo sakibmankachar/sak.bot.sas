@@ -831,8 +831,7 @@ bot.command({
 bot.command({
   name: "searchm",
   code: `
-$awaitMessage[$authorid;10s;1,2,3,4,5;search1,search2,search3,search4,search5;No question picked]
-$setuservar[search;$message[1]]
+$awaitMessage[$authorid;10s;1,2,3,4,5;search1,search2,search3,search4,search5;No Question Picked]
 $description[[ 1 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;url])
 [ 2 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;url])
 [ 3 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;url])
@@ -840,7 +839,7 @@ $description[[ 1 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?searc
 [ 5 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;url])
 Type 1-5, this is will be canceled in 10s]
 $title[Search . . .]
-$thumbnail[$useravatar[$clientid]
+$thumbnail[$useravatar[$clientid]]
 $color[RANDOM]
 $footer[Music]
 $argsCheck[>1;:x: Type the song name/url]
@@ -853,4 +852,16 @@ bot.awaitedCommand({
 bot.awaitedCommand({
   name: "search2",
   code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose2;url];0s;yes;:x: Error while handling the song]`
+});
+
+bot.command({
+  name: "avatar",
+  aliases: ["av", "pfp"],
+  code: `$author[$usertag[$finduser[$message]]]
+$title[Download $usertag[$finduser[$message]]'s avatar with this hyperlink!;$useravatar[$finduser[$message]]]
+$description[]
+$image[$useravatar[$finduser[$message]]]
+$footer[requested by $usertag;$authoravatar]
+$addtimestamp
+$color[RANDOM]`
 });

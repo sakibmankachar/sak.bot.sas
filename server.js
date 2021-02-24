@@ -623,13 +623,13 @@ bot.command({
   nonPrefixed: true,
   code: `$deletecommand
  $onlyIfMessageContains[$message;Fuck;fuck;motherfucker;Motherfucker,Fucker;fucker;fucked;Fucked;Hell;hell;]
- $onlyIf[$getServerVar[word]==true;]
+ $onlyIf[$getServerVar[bw]==true;]
  <@$authorID> Use of Bad Words or Swearing is Not Allowed in this server Reason: **AutoMod Enable**
  `
 });
 
 bot.command({
-  name: "AutoMod on",
+  name: "autoModon",
   code: `$setServerVar[bw;True]
  $onlyBotPerms[managemessages;Bot missing permission **MANAGE MASSAGES**]
  $onlyPerms[managechannels;You are not a moderate or Admin!]
@@ -642,7 +642,7 @@ bot.command({
 });
 
 bot.command({
-  name: "AutoMod off",
+  name: "autoModoff",
   code: `$setServerVar[bw;False]
  $onlyBotPerms[managemessages;Bot missing permission **MANAGE MASSAGES**]
  $onlyPerms[managechannels;You are not a moderator or Admin!]

@@ -753,15 +753,6 @@ bot.command({
  `
 });
 
-bot.command({
-  name: "play",
-  code: `$playSong[$message;1s]`
-});
-
-bot.command({
-  name: "songinfo",
-  code: `Currrently Playing: $songInfo[title]` //Ret
-
 bot.awaitedCommand({
   name: "awaitMusic1",
   code: `$editMessage[$message[1];{color:WHITE}
@@ -813,3 +804,140 @@ bot.command({
  ◀️ - Back};yes]; ]
  $onlyIf[$voiceID[$authorID]!=;Sorry, but you are not connected to the voice channel.]]`
 });
+
+bot.command({
+ name: "searchm",
+ code: `
+$awaitMessage[$authorid;10s;1,2,3,4,5;search1,search2,search3,search4,search5;No question picked]
+$setuservar[search;$message[1]]
+$description[[ 1 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;url])
+[ 2 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;url])
+[ 3 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;url])
+[ 4 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;url])
+[ 5 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;url])
+Type 1-5, this is will be canceled in 10s]
+$title[Search . . .]
+$thumbnail[$useravatar[$clientid]
+$color[RANDOM]
+$footer[Music]
+$argsCheck[>1;:x: Type the song name/url]
+$onlyif[$voiceid!=;:x: You must join the voice channel first]`
+}) 
+
+bot.awaitedCommand({
+ name: "search1",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose1;url];0s;yes;:x: Error while handling the song]`
+}) 
+
+bot.awaitedCommand({
+ name: "search2",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose2;url];0s;yes;:x: Error while handling the song]`
+}) bot.command({
+ name: "searchm",
+ code: `
+$awaitMessage[$authorid;10s;1,2,3,4,5;search1,search2,search3,search4,search5;No question picked]
+$setuservar[search;$message[1]]
+$description[[ 1 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;url])
+[ 2 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;url])
+[ 3 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;url])
+[ 4 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;url])
+[ 5 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;url])
+Type 1-5, this is will be canceled in 10s]
+$title[Search . . .]
+$thumbnail[$useravatar[$clientid]
+$color[RANDOM]
+$footer[Music]
+$argsCheck[>1;:x: Type the song name/url]
+$onlyif[$voiceid!=;:x: You must join the voice channel first]`
+}) 
+
+bot.awaitedCommand({
+ name: "search1",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose1;url];0s;yes;:x: Error while handling the song]`
+}) 
+
+bot.awaitedCommand({
+ name: "search2",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose2;url];0s;yes;:x: Error while handling the song]`
+}) 
+bot.command({
+ name: "searchm",
+ code: `
+$awaitMessage[$authorid;10s;1,2,3,4,5;search1,search2,search3,search4,search5;No question picked]
+$setuservar[search;$message[1]]
+$description[[ 1 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;url])
+[ 2 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;url])
+[ 3 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;url])
+[ 4 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;url])
+[ 5 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;url])
+Type 1-5, this is will be canceled in 10s]
+$title[Search . . .]
+$thumbnail[$useravatar[$clientid]
+$color[RANDOM]
+$footer[Music]
+$argsCheck[>1;:x: Type the song name/url]
+$onlyif[$voiceid!=;:x: You must join the voice channel first]`
+}) 
+
+bot.awaitedCommand({
+ name: "search1",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose1;url];0s;yes;:x: Error while handling the song]`
+}) 
+
+bot.awaitedCommand({
+ name: "search2",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose2;url];0s;yes;:x: Error while handling the song]`
+})bot.command({
+ name: "searchm",
+ code: `
+$awaitMessage[$authorid;10s;1,2,3,4,5;search1,search2,search3,search4,search5;No question picked]
+$setuservar[search;$message[1]]
+$description[[ 1 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;url])
+[ 2 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;url])
+[ 3 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;url])
+[ 4 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;url])
+[ 5 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;url])
+Type 1-5, this is will be canceled in 10s]
+$title[Search . . .]
+$thumbnail[$useravatar[$clientid]
+$color[RANDOM]
+$footer[Music]
+$argsCheck[>1;:x: Type the song name/url]
+$onlyif[$voiceid!=;:x: You must join the voice channel first]`
+}) 
+
+bot.awaitedCommand({
+ name: "search1",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose1;url];0s;yes;:x: Error while handling the song]`
+}) 
+
+bot.awaitedCommand({
+ name: "search2",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose2;url];0s;yes;:x: Error while handling the song]`
+}bot.command({
+ name: "searchm",
+ code: `
+$awaitMessage[$authorid;10s;1,2,3,4,5;search1,search2,search3,search4,search5;No question picked]
+$setuservar[search;$message[1]]
+$description[[ 1 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=1;url])
+[ 2 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=2;url])
+[ 3 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=3;url])
+[ 4 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=4;url])
+[ 5 \\] [$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;title]\\]($jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=ama no jaku&choose=5;url])
+Type 1-5, this is will be canceled in 10s]
+$title[Search . . .]
+$thumbnail[$useravatar[$clientid]
+$color[RANDOM]
+$footer[Music]
+$argsCheck[>1;:x: Type the song name/url]
+$onlyif[$voiceid!=;:x: You must join the voice channel first]`
+}) 
+
+bot.awaitedCommand({
+ name: "search1",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose1;url];0s;yes;:x: Error while handling the song]`
+}) 
+
+bot.awaitedCommand({
+ name: "search2",
+ code: `Added to queue $playSong[$jsonRequest[https://api.itzteduhyt.repl.co/yt-video?search=$getservervar[search]&choose2;url];0s;yes;:x: Error while handli

@@ -332,7 +332,7 @@ bot.variables({
   goodbye: "",
   prefix: "s.",
   money: "500",
-  bw: "
+  bw: "False",
 });
 
 bot.command({
@@ -580,8 +580,8 @@ $author[$username;$authorAvatar]
 
 bot.command({
   name: "leaderboard",
-  code: `$userLeaderboard[money;desc]
-$title[Balance Leaderboard]
+  code: `$title[Balance Leaderboard]
+  $userLeaderboard[money;desc]
 $color[ff00ff]
 `
 });
@@ -617,3 +617,9 @@ https://discord.gg/96BqdnWvh8 ]
 
 $footer[Sak-bot]`
 });
+
+bot.command({
+  name: "fuck",
+  code: `$onlyIf[$getServerVar[bw]>=True;{Use Of Bad words or Swearing is Not Allowed in this Server}`
+})
+

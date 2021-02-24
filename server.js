@@ -332,7 +332,8 @@ bot.variables({
   goodbye: "",
   prefix: "s.",
   money: "500",
-  bw: "False"
+  bw: "False",
+  search: ""
 });
 
 bot.command({

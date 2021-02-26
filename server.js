@@ -8,11 +8,6 @@ var bot = new dbd.Bot({
 bot.onMessage();
 
 bot.command({
-  name: "ping",
-  code: `Pong! \`$ping\``
-});
-
-bot.command({
   name: "rps",
   code: `$argsCheck[1;❌ You must select either Rock, either Paper or either Scissors.]
 $onlyIf[$checkCondition[$toLowercase[$message[1]]==rock]-$checkCondition[$toLowercase[$message[1]]==paper]-$checkCondition[$toLowercase[$message[1]]==scissors]!=false-false-false;❌ You must select either Rock, either Paper or either Scissors.]
@@ -865,3 +860,79 @@ $footer[requested by $usertag;$authoravatar]
 $addtimestamp
 $color[RANDOM]`
 });
+
+bot.command({
+  name: "manga",
+
+  description: "Search manga info via title",
+
+  usage: "manga <manga title>",
+
+  code: `
+
+ 
+
+$title[🗒️ $jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.titles.enJp;]]
+
+$addField[📜 Synopsis;\`\`\`$jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.synopsis;]\`\`\`;no]
+
+$addField[⭐ Rating;\`\`\`$jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.averageRating;]\`\`\`;no]
+
+$addField[🏆 Popularity Rank;\`\`\`$jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.popularityRank;]\`\`\`;no]
+
+$addField[📖 Chapter;\`\`\`$replaceText[$jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.chapterCount;];null;Unknown] Chapter\`\`\`;no]
+
+$addField[📅 Published;\`\`\`$jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.startDate;] - $jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.endDate;]\`\`\`;no]
+
+$color[$getVar[color]]
+
+$image[$jsonRequest[https://api.avux.ga/mangasearch?text=$message;text.posterImage.medium;]]
+
+$footer[Requested By $userTag[$authorID];$authorAvatar]
+
+$addTimestamp
+
+$onlyIf[$message[1]!=;{author:ERROR:$userAvatar[$clientID]}{description:You need to put manga name}{color:FF0000}]
+
+`
+});
+
+bot.command({
+  name: "ping",
+  description: "Shows the bot's latency.",
+  usage: "ping",
+  code: `$endIf
+  $if[$ping<51]
+ $title[:ping_pong: Ping!]
+ $description[:white_circle: = $pingms]
+ $color[dadada]
+$addTimestamp
+$endelseIf
+$elseIf[$ping<150]
+$title[:ping_pong: Ping!]
+ $description[:green_circle: = $pingms]
+ $color[GREEN]
+$addTimestamp
+$endelseif
+$elseIf[$ping<300]
+$title[:ping_pong: Ping!]
+ $description[:yellow_circle: = $pingms]
+ $color[YELLOW]
+$addTimestamp
+$endelseif
+$elseIf[$ping<500]
+$title[:ping_pong: Ping!]
+ $description[:orange_circle: = $pingms]
+ $color[ORANGE]
+ $addTimestamp
+$endelseif
+$elseIf[$ping<1000]
+$title[:ping_pong: Ping!]
+ $description[:red_circle: = $pingms]
+ $color[RED]
+ $addTimestamp
+$endelseif
+$elseif[$ping>1000]
+$title[:ping_pong: Ping!]
+ $description[:black_circle: = $pingms]
+ $color[BLACK]

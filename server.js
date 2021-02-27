@@ -2,7 +2,7 @@ var dbd = require("dbd.js");
 
 var bot = new dbd.Bot({
   token: process.env.BOT_TOKEN,
-  prefix: "s."
+  prefix: "$getServerVar[prefix]"
 });
 
 bot.onMessage();
@@ -865,3 +865,213 @@ $footer[requested by $usertag;$authoravatar]
 $addtimestamp
 $color[RANDOM]`
 });
+
+bot.command({
+ name: "help",
+ code: `
+ $color[RED]
+ $thumbnail[$userAvatar[$clientID]]
+ $if[$message[1]==]
+ $author[$userTag[$clientID];$userAvatar[$clientID]]
+ $addField[GUIDE;to See Commandlist or command type \`$getServerVar[prefix]help <Commandlist> or $getServerVar[prefix]help <Command>\`
+Available Command list:
+⚒️**AutoMod**
+🔨**Moderate**
+🗒️**Logs**
+📝**Information**
+🎮**Game**
+😀**Action**
+🔞**NSFW**
+💲**Economy**
+⬆️**Leveling and Ranking**
+🗨️**Misc**
+😂 **Fun**
+✔️**Extra**
+***If you need any support or advance help. Then you could join my official discord server. [Click Here](https://discord.gg/96BqdnWvh8) ***
+;yes]
+ $endIf
+ $if[$message[1]==Leveling and Ranking]
+ $author[$userTag[$clientID];$userAvatar[$clientID]]
+ $addField[⬆️Leveling and Ranking;\`rank, setrankmsg, resetrank, setrank\`]
+ $endIf
+ $if[$message[1]==Economy]
+ $addField[💸 Economy;\`balance, work, rob, deposit, withdraw\`]
+ $endIf
+$if[$message[1]==Fun]
+ $addField[😂Fun;\`meme\`]
+ $endIf
+$if[$message[1]==Extra]
+ $addField[✔️Extra;\`guide, JALLOGS guide, covid19, invite\`]
+ $endIf
+ $if[$message[1]==AutoMod]
+ $addField[⚒️ AutoMod;\`autoModon, autoModoff\`]
+$endIf
+ $if[$message[1]==Misc]
+ $addField[🗨 Misc;\`ping, help, helproulettle, avatar, setprefix, restprefix\`]
+ $endIf
+ $if[$message[1]==Moderate]
+ $addField[🔨 Moderation;\`ban, kick, warn, unwarn, unmuted, muted, checkwarn\`]
+ $endIf
+ $if[$message[1]==Information]
+ $addField[📝Information;\`manga, anime\`]
+ $endIf
+ $if[$message[1]==Logs]
+ $addField[🗒️Logs;\`setwelcome, setleave\`]
+ $endIf
+ $if[$message[1]==Game]
+ $addField[🎮Game;\`rps, roulette(under development)\`]
+ $endIf
+ $if[$message[1]==NSFW]
+ $addField[🔞
+NSFW;||\`pussy, boob, ass, porn\`||]
+ $endIf
+ $if[$message[1]==Action]
+ $addField[😀Action;\`pat, smile, wave, hug, kiss, blush\`]
+ $endIf
+ $if[$message[1]==autoModon]
+ $addField[autoModon;\`To on the AutoMod System. Usage: $getServerVar[prefix]autoModon\`]
+ $endIf
+ $if[$message[1]==autoModoff]
+ $addField[autoModoff;\`To off the AutoMod System. Usage: $getServerVar[prefix]autoModoff\`]
+ $endIf
+ $if[$message[1]==rank]
+ $addField[rank;\`To see your rank. Usage: $getServerVar[prefix]rank or $getServerVar[prefix]rank <user>\`]
+ $endIf
+ $if[$message[1]==setrankmsg]
+ $addField[setrankmsg;\`To set a level-up or rank-up message. Usage: $getServerVar[prefix]setrankmsg <message>\`]
+ $endIf
+$if[$message[1]==covid19]
+ $addField[covid19;\`to get covid19 result on a country. Usage: $getServerVar[prefix]covid19 <country>\`]
+ $endIf
+ $if[$message[1]==setrank]
+ $addField[setrank;\`To set a rank channel. Usage: $getServerVar[prefix]setrank <channel>\`]
+ $endIf
+ $if[$message[1]==resetrank]
+ $addField[resetrank;\`To reset or off the rank or level system. Usage: $getServerVar[prefix]resetrank\`]
+ $endIf
+ $if[$message[1]==balance]
+ $addField[balance\`To see your balance. Usage: $getServerVar[prefix]balance\`]
+ $endIf
+ $if[$message[1]==work]
+ $addField[work;\`To work. Usage: $getServerVar[prefix]work\`]
+ $endIf
+ $if[$message[1]==withdraw]
+ $addField[withdraw;\`To Withdraw Money from bank(if you have). Usage: $getServerVar[prefix]withdraw <money> or $getServerVar[prefix]withdraw all\`]
+ $endIf
+ $if[$message[1]==deposit]
+ $addField[deposit;\`To deposit money in bank. Usage: $getServerVar[prefix]deposit <money> or $getServerVar[prefix]deposit all\`]
+ $endIf
+ $if[$message[1]==rob]
+ $addField[crime;\`To stole or rob money from user. Usage: $getServerVar[prefix]rob <user> \`]
+ $endIf
+ $if[$message[1]==ping]
+ $addField[ping;\`To see my ping. Usage: $getServerVar[prefix]ping\`]
+ $endIf
+ $if[$message[1]==avatar]
+ $addField[avatar;\`To see user or your Avatar. Usage: $getServerVar[prefix]avatar or $getServerVar[prefix]avatar <user>\`]
+ $endIf
+ $if[$message[1]==help]
+ $addField[help;\`This. Usage: $getServerVar[prefix]help or $getServerVar[prefix]help <Commandlist> or $getServerVar[prefix]help <Command>\`]
+ $endIf
+$if[$message[1]==helproulettle]
+ $addField[🗒️Logs;\`To get help on roulette. Usage: $getServerVar[prefix]helproulettle\`]
+ $endIf
+ $if[$message[1]==ban]
+ $addField[ban;\`To ban a user from a server and require ban or administration permission. Usage: $getServerVar[prefix]ban <user>\`]
+ $endIf
+$if[$message[1]==guide]
+ $addField[guide;\`Want some guide on BDFD? Then here is it. Usage: $getServerVar[prefix]guide\`]
+ $endIf
+$if[$message[1]==meme]
+ $addField[meme;\`Want some random meme? Then here is it. Usage: $getServerVar[prefix]meme\`]
+ $endIf
+$if[$message[1]==JALLOGS guide]
+ $addField[JALLOGS;\`Want some guide on Welcome and leave on BDFD? Then here is it. Usage: $getServerVar[prefix]JALLOGS guide\`]
+ $endIf
+ $if[$message[1]==kick]
+ $addField[kick;\`To kick a user from a server and require kick or administration permission. Usage: $getServerVar[prefix]kick <user>\`]
+ $endIf
+ $if[$message[1]==warn]
+ $addField[warn;\`To warn a user and require manage server or administration permission. Usage: $getServerVar[prefix]warn <user>\`]
+ $endIf
+$if[$message[1]==unwarn]
+ $addField[unwarn;\`To unwarn a user and require manage server or administration permission. Usage: $getServerVar[prefix]unwarn <user>\`]
+ $endIf
+$if[$message[1]==checkwarn]
+ $addField[checkwarn;\`To check warns of a user. Usage: $getServerVar[prefix]checkwarn <user>\`]
+ $endIf
+$if[$message[1]==muted]
+ $addField[muted;\`To mute a user from a server and require manage server or administration permission and must my a role name muted. Usage: $getServerVar[prefix]mute <user>\`]
+ $endIf
+$if[$message[1]==unmute]
+ $addField[unmute;\`To unmute a user from a server and require manage server or administration permission. Usage: $getServerVar[prefix]unmute <user>\`]
+ $endIf
+$if[$message[1]==manga]
+ $addField[manga;\`To get information about a manga. Usage: $getServerVar[prefix]manga <manganame>\`]
+ $endIf
+$if[$message[1]==anime]
+ $addField[anime;\`To get information about a anime. Usage: $getServerVar[prefix]anime <animename>\`]
+ $endIf
+$if[$message[1]==setwelcome]
+ $addField[setwelcome;\`To set a channel where I will welcome user. Usage: $getServerVar[prefix]setwelcome <channel>\`]
+ $endIf
+$if[$message[1]==setleave]
+ $addField[setleave;\`To set a channel where I will goodbye user. Usage: $getServerVar[prefix]setleave <channel>\`]
+ $endIf
+$if[$message[1]==invite]
+ $addField[invite;\`Want my invite link? Usage: $getServerVar[prefix]invite\`]
+ $endIf
+$if[$message[1]==rps]
+ $addField[rps;\`Want to play rock, paper, Scissors with me? Usage: $getServerVar[prefix]rps <rock or paper or Scissors>\`]
+ $endIf
+$if[$message[1]==roulette]
+ $addField[roulette;\`Want to play roulette with me? Usage: $getServerVar[prefix]roulettle <bet>
+Note: This Command is under development so it might not work.\`]
+ $endIf
+$if[$message[1]==pussy]
+ $addField[pussy;\`Want some random pic and gif of ||pussy||? Usage: ||$getServerVar[prefix]pussy||\`]
+ $endIf
+$if[$message[1]==boob]
+ $addField[boob;\`Want some random pic and gif of ||boobs||? Usage: ||$getServerVar[prefix]boob||\`]
+ $endIf
+$if[$message[1]==porn]
+ $addField[porn;\`Want some random pic and gif of ||porn||? Usage: ||$getServerVar[prefix]porn||\`]
+ $endIf
+$if[$message[1]==ass]
+ $addField[ass;\`Want some random pic and gif of ||ass||? Usage: ||$getServerVar[prefix]ass||\`]
+ $endIf
+$if[$message[1]==hug]
+ $addField[hug;\`Want to give hug to someone? Usage: $getServerVar[prefix]hug <user>\`]
+ $endIf
+$if[$message[1]==smile]
+ $addField[smile;\`Want to smile? Usage: $getServerVar[prefix]smile\`]
+ $endIf
+$if[$message[1]==kiss]
+ $addField[kiss;\`Want to kiss someone?Usage: $getServerVar[prefix]kiss <user>\`]
+ $endIf
+$if[$message[1]==blush]
+ $addField[blush;\`Want to show that you are getting blush? Usage: $getServerVar[prefix]blush\`]
+ $endIf
+$if[$message[1]==wave]
+ $addField[wave;\`Want to wave someone? Usage: $getServerVar[prefix]wave <user>\`]
+ $endIf
+$if[$message[1]==pat]
+ $addField[pat;\`Want to pat someone? Usage: $getServerVar[prefix]pat <user>\`]
+ $endIf
+`
+});
+
+bot.command({
+name: "setprefix",
+code:`$title[Prefix]
+$description[Successfully added that Prefix]
+$footer[Newest Prefix is `$message`]
+$setServerVar[prefix;$message]
+`
+})
+
+bot.command({
+name: "resetprefix"
+code: `$title[Reset Prefix]
+$description[Successfully reseted and restored the default prefix]
+$setServerVar[prefix;s.]
